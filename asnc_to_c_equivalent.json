@@ -1,0 +1,14 @@
+{
+  "::=": {
+    "equivalent":"typedef"
+  },
+  "SEQUENCE":{
+    "equivalent" : "struct",
+    "start" : "{",
+    "end" : "}"
+  },
+  "INTEGER" :{
+    "equivalent": "int"
+  },
+  "delimeter":[",","{","}"]
+}

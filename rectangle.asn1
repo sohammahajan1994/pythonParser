@@ -1,0 +1,4 @@
+Rectangle ::= SEQUENCE {
+    height INTEGER,
+    width INTEGER
+}
