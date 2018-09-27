@@ -30,6 +30,7 @@ def process_asn_string(input_string, delimeter, asnc_mapping_object, struct_name
         output_list.append("\n")
         output_list.append(delimeter)
         output_list.append(struct_name.pop() + "_t")
+        output_list.append(";")
 
     output_string = " ".join(output_list)
     print(output_string)
