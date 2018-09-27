@@ -1,14 +1,13 @@
 {
   "::=": {
-    "equivalent":"typedef"
+    "equivalent":"typedef",
+    "min_len" : 3
   },
   "SEQUENCE":{
-    "equivalent" : "struct",
-    "start" : "{",
-    "end" : "}"
+    "equivalent" : "struct"
   },
   "INTEGER" :{
-    "equivalent": "int"
-  },
-  "delimeter":[",","{","}"]
+    "equivalent": "int",
+    "min_len" : 2
+  }
 }
