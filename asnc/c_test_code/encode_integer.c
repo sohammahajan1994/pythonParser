@@ -3,52 +3,52 @@
 #include <stdio.h>
 
 
-void encode_integer(int  int_t, char** temp){
-      	int k, i, l=0, int_base_2 = log2(int_t);
-	int output_length, output_length_bit;
-	//printf("%d\n", int_base_2);
-	if(pow(2, int_base_2) == int_t){
-	   	output_length = int_base_2/8;
-        }
+void encode_integer(int  number_to_be_encoded, char* temp){
+    	int k, i, l=0,number_to_be_encoded_log2 = log2(number_to_be_encoded);
+	int bits_required_encode_number ,octets_req_to_encode_number;
+	//printf("%d\n", number_to_be_encoded_log2);
+	if(pow(2, number_to_be_encoded_log2) == number_to_be_encoded){
+		bits_required_encode_number = number_to_be_encoded_log2;
+	}
 	else{
-		output_length = int_base_2/8 +1;
+		bits_required_encode_number = number_to_be_encoded_log2+1;
 	}
-	//printf("%d\n", output_length);
-	output_length_bit = log2(output_length) +1;
-	//printf("%d\n", output_length_bit);
-	if(output_length_bit >8){
-		return ;
+	if(bits_required_encode_number%8 ==0){
+		 octets_req_to_encode_number = bits_required_encode_number/8 ;
 	}
-	*temp =(char *) malloc((output_length+1)*8* sizeof(char));
+	else{
+		 octets_req_to_encode_number = bits_required_encode_number/8 +1;
+	}
+	//printf("%d\n", bits_required_encode_number);
+	//printf("%d\n", octets_req_to_encode_number);
+	temp =(char *) realloc(temp,(octets_req_to_encode_number+1)*8* sizeof(char));
 	for ( i = 7; i >= 0; i--) {
-        	k = output_length >> i;
+        	k = octets_req_to_encode_number >> i;
 	        if (k & 1)
-        		*(*temp +l) = '1';
+        		*(temp +l) = '1';
         	else
-	            	*(*temp +l) = '0';
+	            	*(temp +l) = '0';
 		l++;
     	}
 	//printf("%s\n",temp);
-	//i = output_length *8;
-	for ( i = (output_length*8) -1 ; i >= 0; i--) {
-                k = int_t >> i;
+	for ( i = (octets_req_to_encode_number*8) -1 ; i >= 0; i--) {
+                k = number_to_be_encoded >> i;
                 if (k & 1)
-                        *(*temp +l) = '1';
+                        *(temp +l) = '1';
                 else
-                        *(*temp +l) = '0';
+                        *(temp +l) = '0';
                 l++;
         }
-	*(*temp+l) = '\0';
+	*(temp+l) = '\0';
 	//printf("%s\n",temp);
 
 
 }
 
 int main(){
-	int int_t = 60;
-	char* output = "outputi :- ";
-	char* temp =NULL;
-	encode_integer(int_t, &temp);
+	int number_to_be_encoded = 266;
+	char* temp = malloc (sizeof(char));
+	encode_integer(number_to_be_encoded, temp);
 	printf("%s\n",temp);
 	free(temp);
 	return 0;
