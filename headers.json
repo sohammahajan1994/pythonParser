@@ -1,0 +1,10 @@
+{
+  "custom_header_files": [
+    "encode.h",
+    "decode.h"
+  ],
+  "system_header_files": [
+    "string.h"
+  ]
+
+}

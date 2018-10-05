@@ -1,7 +1,14 @@
-print("encode decode generator")
+from add_headers_to_file import add_headers_to_file
 
-    # # generate c code for encode_integer
-    # # include header for encode and decode
+print("encode decode generator")
+path = "asnc/output/src/"
+output_directory = "asnc/output/src/"
+output_file = "rectangle.c"
+
+f_output_file = open(path + output_file, "w+")
+# # generate c code for encode_integer ===>  added there in output folder
+add_headers_to_file(f_output_file)
+# # include header for encode and decode
 
     # f_output_file = open(, "w+")
 
@@ -21,3 +28,4 @@ print("encode decode generator")
     # de # add decoded value to the struct
 
 
+f_output_file.close()
