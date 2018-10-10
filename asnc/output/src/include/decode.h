@@ -1,0 +1,1 @@
+int decode_integer(char* input, int *decimal, int start_scanning_ptr);

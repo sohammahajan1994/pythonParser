@@ -2,6 +2,7 @@ from add_headers_to_file import add_headers_to_file
 from extract_smallest_processing_data import extract_smallest_processing_data
 from process_data import process_data
 from generate_encoder_function import generate_encoder_function
+from generate_decoder_function import generate_decoder_function
 
 print("encode decode generator")
 header_file = "headers.json"
@@ -27,6 +28,7 @@ struct_data_dictionary = process_data(data_to_be_processed)
 print(struct_data_dictionary.keys())
 print("========================================================================")
 generate_encoder_function(f_output_file, struct_data_dictionary)
+generate_decoder_function(f_output_file, struct_data_dictionary)
 
 # # read .h
 
