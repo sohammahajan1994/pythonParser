@@ -1,3 +1,6 @@
+from generate_encoder_decoder_defination import generate_encoder_decoder_defination
+
+
 def process_asn_string(input_string, delimeter, asnc_mapping_object, struct_name):
     input_string = input_string.strip()
     word_array = input_string.split(" ")
@@ -29,8 +32,10 @@ def process_asn_string(input_string, delimeter, asnc_mapping_object, struct_name
         output_list.append(";")
         output_list.append("\n")
         output_list.append(delimeter)
-        output_list.append(struct_name.pop() + "_t")
-        output_list.append(";")
+        struct_type = struct_name.pop()
+        output_list.append(struct_type + "_t")
+        output_list.append(";\n\n")
+        output_list.append(generate_encoder_decoder_defination(struct_type))
 
     output_string = " ".join(output_list)
     print(output_string)

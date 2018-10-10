@@ -4,7 +4,10 @@
     "decode.h"
   ],
   "system_header_files": [
-    "string.h"
+    "string.h",
+    "stdio.h",
+    "stdlib.h",
+    "math.h"
   ]
 
 }
