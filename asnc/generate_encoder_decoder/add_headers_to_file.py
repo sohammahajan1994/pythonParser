@@ -1,5 +1,11 @@
-from parser.read_json_file import read_json_file
+import json
 
+
+def read_json_file(filename):
+    with open(filename) as f:
+        data = json.load(f)
+
+    return data
 
 def add_headers_to_file(f_output_file, header_file, custom_header_file):
     header_json_object = read_json_file(header_file)

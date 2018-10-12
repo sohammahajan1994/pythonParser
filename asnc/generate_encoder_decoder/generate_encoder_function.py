@@ -14,7 +14,7 @@ def process_encode_int(f_output_file, struct_name, data_member_name, main_output
 def generate_encoder_function(f_output_file, struct_data_dictionary):
     return_type = "void"
     function_name = "encoder"
-    input_params_type = struct_data_dictionary["struct_type"]
+    input_params_type = struct_data_dictionary["struct_type"].strip(" ")
     input_params_name = struct_data_dictionary["struct_type"].strip(" ") + "_struct"
     input_params_name = input_params_name.lower()
     output_param_type = "char **"
@@ -22,9 +22,9 @@ def generate_encoder_function(f_output_file, struct_data_dictionary):
     bits_req_to_encode  = "bits_req_to_encode"
     size_of_char = " sizeof(char)"
 
-    f_output_file.write(return_type + " " + function_name + "(" + input_params_type + "* " + input_params_name + ", " + output_param_type + output_param_name + "){ \n")
+    f_output_file.write(return_type + " " + function_name + "(" + input_params_type + " *" + input_params_name + ", " + output_param_type + output_param_name + "){ \n")
     function_writer(f_output_file, "int " +bits_req_to_encode + "= 8;" )
-    function_writer(f_output_file, "char temp_int[64];")
+    function_writer(f_output_file, "char temp_int[72];")
 
     for key, val in struct_data_dictionary.items():
         if key.startswith('varname_'):
@@ -34,4 +34,4 @@ def generate_encoder_function(f_output_file, struct_data_dictionary):
                 process_encode_int(f_output_file, input_params_name, actual_key, output_param_name, bits_req_to_encode, size_of_char)
 
 
-    f_output_file.write("}\n")
+    f_output_file.write("}\n\n")

@@ -5,6 +5,7 @@
 
 
 int decode_integer(char* input, int *decimal, int start_scanning_ptr){
+	//*decimal =0 ;
         int octet_required_to_scan =0 , i;
         for(i=start_scanning_ptr;i<start_scanning_ptr+8;i++){
                 if (*(input+i) == '1'){
@@ -23,6 +24,8 @@ int decode_integer(char* input, int *decimal, int start_scanning_ptr){
                         *decimal = (*decimal<<1) + 0 ;
                 }
         }
-        //printf("actual number %d\n",*decimal);
+        //printf("decimal number %d\n",*decimal);
         //printf("======================================\n");
+        //printf("returned %d\n\n", start_scanning_ptr + 8 + octet_required_to_scan*8);
+         return start_scanning_ptr + 8 + octet_required_to_scan*8;
 }
